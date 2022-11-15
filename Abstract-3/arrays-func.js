@@ -129,12 +129,6 @@ console.log(getSquares(numbers));
 
 
 
-
-
-
-
-
-
 console.log((range(0,-10, -1)));
 console.log((range(0,-10, -1)
 .map(n => n * n))
