@@ -2,8 +2,17 @@ console.log('Функции');
 
 let numbers = [1,13,45,2,-1,0];
 
-//const randomInt = (min, max) =>min + Math.floor(Math.random() * (max - min));
+const createArray = (mapFunction = index => index) => length => 
+    Array.from({length}, (_, index) =>mapFunction(index));
+    //Array.from({length}.map((_), index) => index)
 
+
+let number = createArray() (10);
+console.log('Генерируем массив', number);
+
+
+
+//const randomInt = (min, max) =>min + Math.floor(Math.random() * (max - min));
 
 console.log(numbers.includes(13));
 console.log(numbers.includes(12));
@@ -84,9 +93,7 @@ const randomInt = (min, max) =>
     min + Math.floor(Math.random() * (max - min))
 
 
-const createArray = (mapFunction = index => index) => length => 
-    Array.from({length}, (_, index) =>mapFunction(index));
-    //Array.from({length}.map((_), index) => index)
+
 
 
 const range = (start, end, step = 1) => createArray(index => start + index * step) (Math.ceil(end - start)/ step);

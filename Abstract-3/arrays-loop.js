@@ -1,6 +1,19 @@
 console.log('Циклы');
 
-// let numbers = [1, 13, 45, 2, 0, 48]
+const createArray = (mapFunction = index => index) => length => {
+    const array = [];
+    for (let i = 0; i < length; i++) {
+        array.push(mapFunction(i))
+        
+    }
+    return array
+}
+
+let number = createArray() (10);
+console.log('Генерируем массив', number);
+
+
+let numbers = [1, 13, 45, 2, 0, 48]
 
 const getSum = arrNum => {
     let container = 0
