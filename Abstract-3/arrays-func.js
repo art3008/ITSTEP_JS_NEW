@@ -1,3 +1,5 @@
+console.log('Функции');
+
 let numbers = [1,13,45,2,-1,0];
 
 //const randomInt = (min, max) =>min + Math.floor(Math.random() * (max - min));
@@ -10,6 +12,7 @@ console.log(numbers.includes(12));
 // let indexOf13 = numbers.indexOf(13)
 // numbers[indexOf13] = 100
 // console.log(numbers);
+
 
 
 console.log(numbers.indexOf(13));

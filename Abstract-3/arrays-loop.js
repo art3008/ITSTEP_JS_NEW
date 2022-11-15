@@ -1,3 +1,5 @@
+console.log('Циклы');
+
 // let numbers = [1, 13, 45, 2, 0, 48]
 
 const getSum = arrNum => {
