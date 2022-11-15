@@ -30,19 +30,6 @@ const randomInt = (min, max) =>min + Math.floor(Math.random() * (max - min));
 const createRandomArray = (min, max, length) => {let arr = [];for (let i = 0; i < length; i++){arr.push(randomInt(min, max));}return arr;};
 
 
-const filter = predicate => array => {
-    let filtered = [];
-    for (let i = 0; i < array.length; i++) {
-        if(predicate(array[i])) {
-            filtered.push(array[i])
-        }
-    }
-    return filtered
-}
-
-const filterOnlyNegative = filter(n => n < 0);
-const filterOnlyPositive = filter(n => n > 0);
-
 const getSum = array => 
 {
     let counter = 0 
@@ -91,8 +78,8 @@ const logResult = (box, goal) => {
 }
 
 const logStatistics = transactions => {
-    let gains = filterOnlyPositive(transactions)
-    let loses = filterOnlyNegative(transactions)
+    let gains = transactions.filter(item => item > 0)
+    let loses = transactions.filter(item => item < 0)
 
     console.log(`Суммарный доход ${getSum(gains)}`);
     console.log(`Суммарный расход ${getSum(loses)}`);
@@ -113,7 +100,6 @@ let amounts = createRandomArray(-10, 30, 30);
 
 let transactions = []
 while(box < goal && amounts.length > 0) {
-
 
     let amount = amounts.shift();
     box += amount;
