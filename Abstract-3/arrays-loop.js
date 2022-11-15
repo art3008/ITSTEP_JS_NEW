@@ -4,7 +4,6 @@ const createArray = (mapFunction = index => index) => length => {
     const array = [];
     for (let i = 0; i < length; i++) {
         array.push(mapFunction(i))
-        
     }
     return array
 }
@@ -13,7 +12,30 @@ let number = createArray() (10);
 console.log('Генерируем массив', number);
 
 
-let numbers = [1, 13, 45, 2, 0, 48]
+const range = (start, end, step = 1) => 
+    createArray(index => start + index * step) (Math.ceil(end - start)/ step);
+
+console.log('Генерируем промежуток от 1 до 10', range(1, 11));
+console.log('Генерируем промежуток от 0 до -10', range(0, -10, -1));
+console.log('Генерируем промежуток от 3 до 11 с шагом 2', range(3, 12 , 2));
+
+
+const randomInt = (min, max) =>
+    min + Math.floor(Math.random() * (max - min))
+
+const createRandomArray = (min, max) => length => {
+    let arr = []
+    for (let i = 0; i < length; i++) {
+        arr.push(randomInt(min,max))
+    }
+    return arr
+}
+
+
+let randoms = createRandomArray(-5, 20) (10)
+    console.log('Генерируем массив случайных чисел от -5 20', randoms);
+
+let numbers = createArray()(10)
 
 const getSum = arrNum => {
     let container = 0
@@ -23,35 +45,43 @@ const getSum = arrNum => {
     return container
 }
 
-// console.log(getSum(numbers));
+const getProduct = arrNum => {
+    let container = 1
+    for (let i = 0; i < arrNum.length; i++) {
+        container *= arrNum[i]
+    }
+    return container
+}
+
+console.log('Вычисляет сумму чисел в массиве ' + getSum(numbers), numbers);
 
 
-// const getMin = arrNum => {
-//     let minVal = Infinity
-//     for (let i = 0; i < arrNum.length; i++) {
-//         if(arrNum[i] < minVal) {
-//             minVal = arrNum[i]
-//         }
-//     }
+const getMin = arrNum => {
+    let minVal = Infinity
+    for (let i = 0; i < arrNum.length; i++) {
+        if(arrNum[i] < minVal) {
+            minVal = arrNum[i]
+        }
+    }
 
-//     return minVal
-// }
+    return minVal
+}
 
-// console.log(getMin(numbers));
+console.log('Находим наименьшее число ' + getMin(randoms), randoms);
 
-// const getMax = arrNum => {
-//     let maxVal = -Infinity
-//     for (let i = 0; i < arrNum.length; i++) {
-//         if(arrNum[i] > maxVal) {
-//             maxVal = arrNum[i]
-//         }
-//     }
+const getMax = arrNum => {
+    let maxVal = -Infinity
+    for (let i = 0; i < arrNum.length; i++) {
+        if(arrNum[i] > maxVal) {
+            maxVal = arrNum[i]
+        }
+    }
 
-//     return maxVal
-// }
+    return maxVal
+}
 
 
-// console.log(getMax(numbers));
+console.log('Находим наибольшее число ' + getMax(randoms), randoms);
 
 
 // const getRange = arrNum => {
@@ -149,16 +179,7 @@ const getSum = arrNum => {
 // console.log(numbers.pop());
 // console.log(numbers);
 
-const randomInt = (min, max) =>
-    min + Math.floor(Math.random() * (max - min))
 
-const createRandomArray = (min, max, n) => {
-    let arr = []
-    for (let i = 0; i < n; i++) {
-        arr.push(randomInt(min,max))
-    }
-    return arr
-}
 
 // console.log(createRandomArray(5,10,5));
 
@@ -287,43 +308,43 @@ const createRandomArray = (min, max, n) => {
 
 // frame(words)
 
-let randoms = createRandomArray(0,11,1000)
+// let randoms = createRandomArray(0,11,1000)
 
 
-const getAverage = numbers => getSum(numbers) / numbers.length
+// const getAverage = numbers => getSum(numbers) / numbers.length
 
 
-const analyze = (numbers, max) => {
-    console.log(getAverage(numbers));
+// const analyze = (numbers, max) => {
+//     console.log(getAverage(numbers));
 
-    let frequencies = [];
+//     let frequencies = [];
 
 
-    for (let i = 0; i <= max; i++) {
-        frequencies[i] = 0  
-    }
+//     for (let i = 0; i <= max; i++) {
+//         frequencies[i] = 0  
+//     }
 
-    for (let i = 0; i < numbers.length; i++) {
-        const number = numbers[i];
-        frequencies[number] += 1;
-    }
+//     for (let i = 0; i < numbers.length; i++) {
+//         const number = numbers[i];
+//         frequencies[number] += 1;
+//     }
 
-    console.log(frequencies);
+//     console.log(frequencies);
 
-    const averageFrequency = getAverage(frequencies)
+//     const averageFrequency = getAverage(frequencies)
 
-    console.log(averageFrequency);
+//     console.log(averageFrequency);
 
-    let diviations = []
+//     let diviations = []
 
-    for (let i = 0; i <= frequencies.length; i++) {
-        diviations[i] = frequencies[i] - averageFrequency      
-    }
+//     for (let i = 0; i <= frequencies.length; i++) {
+//         diviations[i] = frequencies[i] - averageFrequency      
+//     }
 
-    console.log(diviations);
-}
+//     console.log(diviations);
+// }
 
-analyze(randoms, 10);
+// analyze(randoms, 10);
 
 
 

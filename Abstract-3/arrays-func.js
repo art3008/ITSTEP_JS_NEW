@@ -1,7 +1,5 @@
 console.log('Функции');
 
-let numbers = [1,13,45,2,-1,0];
-
 const createArray = (mapFunction = index => index) => length => 
     Array.from({length}, (_, index) =>mapFunction(index));
     //Array.from({length}.map((_), index) => index)
@@ -11,8 +9,49 @@ let number = createArray() (10);
 console.log('Генерируем массив', number);
 
 
+const range = (start, end, step = 1) => 
+    createArray(index => start + index * step) (Math.ceil(end - start)/ step);
 
-//const randomInt = (min, max) =>min + Math.floor(Math.random() * (max - min));
+
+let numbers = range(0,10) 
+
+console.log('Генерируем промежуток от 1 до 10', range(1, 11));
+console.log('Генерируем промежуток от 0 до -10', range(0, -10, -1));
+console.log('Генерируем промежуток от 3 до 11 с шагом 2', range(3, 12 , 2));
+
+const randomInt = (min, max) =>
+    min + Math.floor(Math.random() * (max - min))
+
+const createRandomArray = (min, max) => 
+    createArray(() => randomInt(min, max));
+
+ 
+let randoms = createRandomArray(-5, 20) (20)
+console.log('Генерируем массив случайных чисел от -5 20', randoms);
+
+const getSum = number => number.reduce((sum, number) => sum + number ,0)
+const getProduct = number => number.reduce((product, number) => product * number ,1)
+
+console.log('Вычисляем сумму чисел в массиве ' + getSum(numbers), numbers);
+console.log('Произведение чисел в массиве ' + getProduct(numbers), numbers);
+
+
+const getMin = arrNum => arrNum.reduce((min, number) => number < min ? number : min, Infinity)
+// const getMin = arrNum => arrNum.reduce((min, number) => Math.min(min, number), Infinity)
+// const getMin = arrNum => Math.min(...arrNum);
+
+console.log('Находим наименьшее число ' + getMin(randoms), randoms);
+
+const getMax = arrNum => arrNum.reduce((max, number) => number > max ? number : max, -Infinity)
+// const getMax = arrNum => arrNum.reduce((max, number) => Math.max(max, number), -Infinity)
+// const getMax = arrNum => Math.max(...arrNum);
+
+console.log('Находим наибольшее число ' + getMax(randoms), randoms);
+
+
+
+
+
 
 console.log(numbers.includes(13));
 console.log(numbers.includes(12));
@@ -89,14 +128,12 @@ console.log(numbers);
 console.log(getSquares(numbers));
 
 
-const randomInt = (min, max) =>
-    min + Math.floor(Math.random() * (max - min))
 
 
 
 
 
-const range = (start, end, step = 1) => createArray(index => start + index * step) (Math.ceil(end - start)/ step);
+
 
 console.log((range(0,-10, -1)));
 console.log((range(0,-10, -1)
@@ -116,8 +153,7 @@ console.log((range(0,-10, -1)
 //     // return arr
 // }
 
-const createRandomArray = (min, max) => 
-    createArray(() => randomInt(min, max));
+
 
 
 
@@ -138,11 +174,8 @@ console.log(tmp);
 console.log(copy);
 
 
-const getSum = number => number.reduce((sum, number) => sum + number ,0)
-const getProduct = number => number.reduce((product, number) => product * number ,1)
 
-console.log(getSum(range(0, 5)));
-console.log(getProduct(range(1, 5)));
+
 
 const map = mappingFunction => array => 
     array.reduce((mapped, element) => {
