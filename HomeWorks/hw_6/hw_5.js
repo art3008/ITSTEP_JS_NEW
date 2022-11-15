@@ -1,7 +1,5 @@
 const nNounRus = (form1, form2, form3) => {
-
     return (n) => {
-        
         let absN = Math.abs(n)
 
         //123456
@@ -20,15 +18,12 @@ const nNounRus = (form1, form2, form3) => {
                 word = form3
             }
         }
-
         return absN + " " + word
     }
 }
 
 const randomInt = (min, max) =>min + Math.floor(Math.random() * (max - min));
-
 const createRandomArray = (min, max, length) => {let arr = [];for (let i = 0; i < length; i++){arr.push(randomInt(min, max));}return arr;};
-
 
 const getSum = array => 
 {
@@ -36,12 +31,10 @@ const getSum = array =>
     for (let i = 0; i < array.length; i++) {
         counter += array[i]
     }
-
     return counter
 }
 
 const getAverage = numbers => getSum(numbers) / numbers.length
-
 const logBoxState = box => {
     console.log(`В ящике ${nApples(box)}`);
 
@@ -54,9 +47,7 @@ const logBoxState = box => {
     }
 }
 
-
 const nApples = nNounRus('яблоко','яблока','яблок')
-
 const logTransaction = amount => {
     console.log('----------');
     if(amount >= 0) {
@@ -86,7 +77,6 @@ const logStatistics = transactions => {
 
     console.log(`Средний доход ${getAverage(gains)}`);
     console.log(`Средний расход ${getAverage(loses)}`);
-
 }
 
 // -------
