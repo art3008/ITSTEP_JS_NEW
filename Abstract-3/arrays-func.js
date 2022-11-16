@@ -25,7 +25,6 @@ const randomInt = (min, max) =>
 const createRandomArray = (min, max) => 
     createArray(() => randomInt(min, max));
 
- 
 let randoms = createRandomArray(-5, 20) (20)
 console.log('Генерируем массив случайных чисел от -5 20', randoms);
 

@@ -1,3 +1,13 @@
+const createArray = (mapFunction = index => index) => length => 
+    Array.from({length}, (_, index) =>mapFunction(index));
+    //Array.from({length}.map((_), index) => index)
+
+const randomInt = (min, max) =>
+    min + Math.floor(Math.random() * (max - min))
+
+const createRandomArray = (min, max) => 
+    createArray(() => randomInt(min, max));
+
 const nNounRus = (form1, form2, form3) => {
     return (n) => {
         let absN = Math.abs(n)
@@ -21,9 +31,6 @@ const nNounRus = (form1, form2, form3) => {
         return absN + " " + word
     }
 }
-
-const randomInt = (min, max) =>min + Math.floor(Math.random() * (max - min));
-const createRandomArray = (min, max, length) => {let arr = [];for (let i = 0; i < length; i++){arr.push(randomInt(min, max));}return arr;};
 
 const getSum = array => array.reduce((a,b) => a + b,0)
 
@@ -64,6 +71,8 @@ const logResult = (box, goal) => {
 
 const areAllPositive = array => array.every(item => item > 0)
 
+const arrRevers = array => array.reverse()
+
 const logStatistics = transactions => {
     let gains = transactions.filter(item => item > 0)
     let loses = transactions.filter(item => item < 0)
@@ -77,18 +86,21 @@ const logStatistics = transactions => {
 }
 
 
+
 const getIncomeOrExpense = transactions => transactions.map(item => item > 0 ? console.log('Доход: ' + item) : console.log('Расход: ' + item))
 
 // -------
-let goal = 100
+let goal = 50
 
 let box = 0;
 logBoxState(box);
 
-let amounts = createRandomArray(-10, 30, 30);
+let amounts = createRandomArray(-10, 30) (30);
 
+console.log(amounts);
 
 let transactions = []
+
 while(box < goal && amounts.length > 0) {
 
     let amount = amounts.shift();
@@ -102,5 +114,8 @@ while(box < goal && amounts.length > 0) {
 
 logResult(box, goal)
 logStatistics(transactions);
-getIncomeOrExpense(transactions)
+console.log(transactions);
+const rvrsTransact = arrRevers(transactions);
+console.log(rvrsTransact);
+getIncomeOrExpense(rvrsTransact)
 console.log(areAllPositive(transactions) === true ? 'О, у нас все положительные транзакции' : 'Увы, но ни одной положительной транзакции');
